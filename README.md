@@ -36,18 +36,26 @@ Bônus
 
 Fazer um map/reduce das cobranças realizadas e gerar um relatório com o total cobrado no
 mês para cada estado.
+
 Pré-requisitos
+
 ● Todo código deve estar no Github do candidato e deve ser informado ao término.
+
 ● Aplicação deve conter todo o necessário para seu funcionamento, não deve ser
 necessário instalar qualquer tipo de novo recurso externo, com exceção dos
 frameworks e pacotes (nuguets);
+
 ● .Net;
+
 ● XUnit ou NUnit para testes;
+
 ● API RESTful;
+
 ● Persistência de livre escolha, como sugestão: Firebase, Redis Cloud, ou qualquer
 serviço de nuvem, para evitar necessidades de instalação.
 
 Dicas
+
 ● Surpreenda-nos e lembre-se menos é mais!
 ● Nomes são uma das coisas mais importantes!
 ● Documentação da API automática é um bônus muito bem-vindo!
