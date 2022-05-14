@@ -1,26 +1,26 @@
-﻿using System.Text.Json;
+﻿using PayService.Customer;
+using System.Text.Json;
 using System.Text.Json.Serialization;
-using StackExchange.Redis;
+using PayService.Contract.Model;
+using PayService.Contract.Data;
+using PayService.Data.Redis;
 
 namespace PayService.Customer.Data
 {
-    public class CustomerRepository
+    public class CustomerRepository : ICustomerRepository
     {
-        private readonly string _connectionString = "payservice.redis.cache.windows.net,abortConnect=false,ssl=true,allowAdmin=true,password=IfT8aZKIMHOhfvVO4uAuFaHEm7LlmI4IWAzCaG8qkms=";
-        private readonly ConnectionMultiplexer _redis;
-        private readonly IDatabase _database;
+        private readonly RedisClient _client;
 
         public CustomerRepository()
         {
-            _redis = ConnectionMultiplexer.Connect(_connectionString);
-            _database = _redis.GetDatabase(1);
+            _client = new RedisClient(DatabaseType.CUSTOMERS);
         }
 
-        public async Task<Customer?> FindByCpf(string cpf)
+        public async Task<ICustomer?> FindByCpf(string cpf)
         {
             try
             {
-                var result = await _database.StringGetAsync(cpf);
+                var result = await _client.Database.StringGetAsync(cpf);
 
                 if (result == string.Empty)
                 {
@@ -43,7 +43,7 @@ namespace PayService.Customer.Data
         }
 
 
-        public async Task<Customer?> InsertNewCustomer(Customer customer)
+        public async Task<ICustomer?> InsertNewCustomer(ICustomer customer)
         {
             try
             {
@@ -53,7 +53,7 @@ namespace PayService.Customer.Data
                     return result;
                 }
 
-                await _database.StringSetAsync(customer.Cpf, JsonSerializer.Serialize(customer));
+                await _client.Database.StringSetAsync(customer.Cpf, JsonSerializer.Serialize(customer));
 
                 return customer;
             }

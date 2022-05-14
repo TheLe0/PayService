@@ -12,9 +12,15 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PayService.Customer", "src\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PayService.Core", "src\PayService.Core\PayService.Core.csproj", "{61BFA3FC-D282-49DF-B126-3A477889718C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PayService.Customer.Test", "test\PayService.Customer.Test\PayService.Customer.Test.csproj", "{F6FEDC2C-EE5B-4E53-8223-1F5DDE319DA0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PayService.Customer.Test", "test\PayService.Customer.Test\PayService.Customer.Test.csproj", "{F6FEDC2C-EE5B-4E53-8223-1F5DDE319DA0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PayService.Contract", "src\PayService.Contract\PayService.Contract.csproj", "{E9FE61BA-C051-4656-BDD8-87285F5E82B2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PayService.Contract", "src\PayService.Contract\PayService.Contract.csproj", "{E9FE61BA-C051-4656-BDD8-87285F5E82B2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PayService.Charge", "src\PayService.Charge\PayService.Charge.csproj", "{FDC5882A-AED2-44C3-9F54-CF3CAD91EBF3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PayService.Charge.Test", "test\PayService.Charge.Test\PayService.Charge.Test.csproj", "{B2AFDED3-E8BB-4FE5-9204-365221DE3048}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PayService.Data", "src\PayService.Data\PayService.Data.csproj", "{B644B41E-60B7-4033-9DD1-238E8E34E2DB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -42,6 +48,18 @@ Global
 		{E9FE61BA-C051-4656-BDD8-87285F5E82B2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E9FE61BA-C051-4656-BDD8-87285F5E82B2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E9FE61BA-C051-4656-BDD8-87285F5E82B2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FDC5882A-AED2-44C3-9F54-CF3CAD91EBF3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FDC5882A-AED2-44C3-9F54-CF3CAD91EBF3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FDC5882A-AED2-44C3-9F54-CF3CAD91EBF3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FDC5882A-AED2-44C3-9F54-CF3CAD91EBF3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B2AFDED3-E8BB-4FE5-9204-365221DE3048}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B2AFDED3-E8BB-4FE5-9204-365221DE3048}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B2AFDED3-E8BB-4FE5-9204-365221DE3048}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B2AFDED3-E8BB-4FE5-9204-365221DE3048}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B644B41E-60B7-4033-9DD1-238E8E34E2DB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B644B41E-60B7-4033-9DD1-238E8E34E2DB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B644B41E-60B7-4033-9DD1-238E8E34E2DB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B644B41E-60B7-4033-9DD1-238E8E34E2DB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

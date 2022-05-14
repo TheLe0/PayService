@@ -25,7 +25,7 @@ namespace PayService.Customer.Service
         public async Task<ICustomer?> FindCustomerByCpf(string cpf)
         {
             var _cpf = new Cpf(cpf);
-            var customer = await _repository.FindByCpf(cpf);
+            var customer = await _repository.FindByCpf(_cpf.ToString());
 
             return customer;
         }
