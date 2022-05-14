@@ -7,10 +7,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="StackExchange.Redis" Version="2.5.61" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\PayService.Contract\PayService.Contract.csproj" />
     <ProjectReference Include="..\PayService.Core\PayService.Core.csproj" />
     <ProjectReference Include="..\PayService.Data\PayService.Data.csproj" />

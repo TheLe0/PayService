@@ -1,4 +1,5 @@
-﻿using StackExchange.Redis;
+﻿using PayService.Data.Configuration;
+using StackExchange.Redis;
 
 namespace PayService.Data.Redis
 {
@@ -10,18 +11,9 @@ namespace PayService.Data.Redis
 
         public RedisClient(DatabaseType type)
         {
-            _connectionString = GetConnectionString();
+            _connectionString = ConfigurationManager.GetInstance().RedisConfig.ConnectionString;
             _redis = ConnectionMultiplexer.Connect(_connectionString);
             Database = _redis.GetDatabase((int) type);
-        }
-
-        private static string GetConnectionString()
-        {
-            #if DEBUG
-                return "payservice.redis.cache.windows.net,abortConnect=false,ssl=true,allowAdmin=true,password=IfT8aZKIMHOhfvVO4uAuFaHEm7LlmI4IWAzCaG8qkms=";
-            #else
-                return string.Empty;
-            #endif
         }
     }
 }
