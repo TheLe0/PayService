@@ -33,13 +33,14 @@ namespace PayService.API.Controllers
 
                 if (customer == null)
                 {
-                    return StatusCode(500, $"Error: Internal server error!");
+                    return StatusCode(404, $"Error: Fail during the customer creation, verify the data and try again!");
                 }
 
                 return Ok(customer);
             }
             catch (DomainException exc)
             {
+                _logger.LogError(exc.Message);
                 return StatusCode(400, $"Error: {exc.Message}");
             }
         }
@@ -54,13 +55,14 @@ namespace PayService.API.Controllers
 
                 if (customer == null)
                 {
-                    return StatusCode(500, $"Error: Internal server error!");
+                    return StatusCode(404, $"Error: Customer not found!");
                 }
 
                 return Ok(customer);
             }
             catch (DomainException exc)
             {
+                _logger.LogError(exc.Message);
                 return StatusCode(400, $"Error: {exc.Message}");
             }
         }

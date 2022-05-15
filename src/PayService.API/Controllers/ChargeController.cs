@@ -33,7 +33,7 @@ namespace PayService.API.Controllers
 
                 if (result == null)
                 {
-                    return StatusCode(400, $"Error: Cpf not found on the system!");
+                    return StatusCode(404, $"Error: Cpf not found on the system!");
                 }
                 else
                 {

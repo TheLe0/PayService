@@ -22,9 +22,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PayService.Charge.Test", "t
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PayService.Data", "src\PayService.Data\PayService.Data.csproj", "{B644B41E-60B7-4033-9DD1-238E8E34E2DB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PayService.Core.Test", "test\PayService.Core.Test\PayService.Core.Test.csproj", "{C407916F-FB80-4EBE-94DF-D18D8FB802CE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PayService.Core.Test", "test\PayService.Core.Test\PayService.Core.Test.csproj", "{C407916F-FB80-4EBE-94DF-D18D8FB802CE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PayService.Data.Test", "test\PayService.Data.Test\PayService.Data.Test.csproj", "{B7F8B545-49F6-4257-8504-CECF6E2DA462}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PayService.Data.Test", "test\PayService.Data.Test\PayService.Data.Test.csproj", "{B7F8B545-49F6-4257-8504-CECF6E2DA462}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PayService.API.Test", "test\PayService.API.Test\PayService.API.Test.csproj", "{90CFCA84-DF64-4CC6-BF2E-3C4548A0DCB3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -72,6 +74,10 @@ Global
 		{B7F8B545-49F6-4257-8504-CECF6E2DA462}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B7F8B545-49F6-4257-8504-CECF6E2DA462}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B7F8B545-49F6-4257-8504-CECF6E2DA462}.Release|Any CPU.Build.0 = Release|Any CPU
+		{90CFCA84-DF64-4CC6-BF2E-3C4548A0DCB3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{90CFCA84-DF64-4CC6-BF2E-3C4548A0DCB3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{90CFCA84-DF64-4CC6-BF2E-3C4548A0DCB3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{90CFCA84-DF64-4CC6-BF2E-3C4548A0DCB3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
