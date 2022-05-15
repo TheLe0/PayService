@@ -1,8 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using PayService.API.BodyRequests;
 using PayService.Contract.Service;
 using PayService.Core.Exception;
-using PayService.Charge.Service;
-using PayService.Customer.Service;
 
 namespace PayService.API.Controllers
 {
@@ -10,23 +9,27 @@ namespace PayService.API.Controllers
     public class ChargeController : ControllerBase
     {
         private readonly ILogger<ChargeController> _logger;
-        private readonly IChargeService _service;
+        private readonly IChargeService _chargeService;
+        private readonly ICustomerService _customerService;
 
-        public ChargeController(ILogger<ChargeController> logger)
+        public ChargeController(ILogger<ChargeController> logger, IChargeService chargeService, ICustomerService customerService)
         {
             _logger = logger;
-            _service = new ChargeService();
+            _chargeService = chargeService;
+            _customerService = customerService;
         }
 
         [HttpPost]
         [Route("payservice/charge")]
-        public async Task<IActionResult> CreateCharge(string cpf, double totalAmount, DateTime dueDate)
+        public async Task<IActionResult> CreateCharge([FromBody] ChargeBodyRequest body)
         {
             try
             {
-                var customerService = new CustomerService();
+                var cpf = body.Cpf;
+                var totalAmount = body.TotalAmount;
+                var dueDate = body.DueDate;
 
-                var result = await customerService.FindCustomerByCpf(cpf);
+                var result = await _customerService.FindCustomerByCpf(cpf);
 
                 if (result == null)
                 {
@@ -34,7 +37,7 @@ namespace PayService.API.Controllers
                 }
                 else
                 {
-                    var charge = await _service.CreateTransaction(cpf, totalAmount, dueDate);
+                    var charge = await _chargeService.CreateTransaction(cpf, totalAmount, dueDate);
 
                     if (charge == null)
                     {
@@ -52,20 +55,27 @@ namespace PayService.API.Controllers
 
         [HttpGet]
         [Route("payservice/charge")]
-        public async Task<IActionResult> ListTransactions(string? cpf, DateTime? dueDate)
+        public async Task<IActionResult> ListTransactions(string? cpf, string? month)
         {
-            if (cpf != null)
+            try
             {
-                var result = await _service.ListTransactions(cpf);
-                return Ok(result);
-            }
-            else if (dueDate != null)
-            {
-                var result = await _service.ListTransactions((DateTime)dueDate);
-                return Ok(result);
-            }
+                if (cpf != null)
+                {
+                    var result = await _chargeService.ListTransactionsByCpf(cpf);
+                    return Ok(result);
+                }
+                else if (month != null)
+                {
+                    var result = await _chargeService.ListTransactionsByMonth(month);
+                    return Ok(result);
+                }
 
-            return StatusCode(400, $"Error: You must specify a cpf or a due date!");
+                return StatusCode(400, $"Error: You must specify a cpf or a due date!");
+            }
+            catch (DomainException exc)
+            {
+                return StatusCode(400, $"Error: {exc.Message}");
+            }
         }
     }
 }

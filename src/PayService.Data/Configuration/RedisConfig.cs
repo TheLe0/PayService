@@ -8,6 +8,6 @@ namespace PayService.Data.Configuration
 {
     public class RedisConfig
     {
-        public string ConnectionString { get; set; }
+        public string? ConnectionString { get; set; }
     }
 }

@@ -1,7 +1,8 @@
 using Microsoft.AspNetCore.Mvc;
+using PayService.API.BodyRequests;
 using PayService.Contract.Service;
 using PayService.Core.Exception;
-using PayService.Customer.Service;
+using PayService.Customer.Data;
 
 namespace PayService.API.Controllers
 {
@@ -12,18 +13,22 @@ namespace PayService.API.Controllers
         private readonly ILogger<CustomerController> _logger;
         private readonly ICustomerService _service;
 
-        public CustomerController(ILogger<CustomerController> logger)
+        public CustomerController(ILogger<CustomerController> logger, ICustomerService service)
         {
             _logger = logger;
-            _service = new CustomerService();
+            _service = service;
         }
 
         [HttpPost]
         [Route("payservice/customer")]
-        public async Task<IActionResult> CreateCustomer(string name, string state, string cpf)
+        public async Task<IActionResult> CreateCustomer([FromBody] CustomerBodyRequest body)
         {
             try
             {
+                string name = body.Name;
+                string state = body.State; 
+                string cpf = body.Cpf;
+
                 var customer = await _service.CreateCustomer(name, state, cpf);
 
                 if (customer == null)

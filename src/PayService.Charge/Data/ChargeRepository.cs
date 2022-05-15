@@ -1,4 +1,5 @@
 ﻿using System.Text.Json;
+using PayService.Core.ValueObject;
 using PayService.Contract.Data;
 using PayService.Contract.Model;
 using PayService.Data.Redis;
@@ -8,12 +9,12 @@ namespace PayService.Charge.Data
     public class ChargeRepository : IChargeRepository
     {
         private readonly RedisClient _clientTransactionsByCpf;
-        private readonly RedisClient _clientTransactionsByDueDate;
+        private readonly RedisClient _clientTransactionsByMonth;
 
         public ChargeRepository()
         {
             _clientTransactionsByCpf = new RedisClient(DatabaseType.TRANSACTIONS_BY_CPF);
-            _clientTransactionsByDueDate = new RedisClient(DatabaseType.TRANSACTIONS_BY_DATE);
+            _clientTransactionsByMonth = new RedisClient(DatabaseType.TRANSACTIONS_BY_MONTH);
         }
 
         public async Task<List<ICharge>> ListTransactionsByCpf(string cpf)
@@ -46,13 +47,13 @@ namespace PayService.Charge.Data
             return list;
         }
 
-        public async Task<List<ICharge>> ListTransactionsByDueDate(DateTime dueDate)
+        public async Task<List<ICharge>> ListTransactionsByMonth(string month)
         {
             var list = new List<ICharge>();
 
             try
             {
-                var result = await _clientTransactionsByDueDate.Database.StringGetAsync(dueDate.ToString());
+                var result = await _clientTransactionsByMonth.Database.StringGetAsync(month);
 
                 if (result != string.Empty)
                 {
@@ -87,13 +88,15 @@ namespace PayService.Charge.Data
             return transaction;
         }
 
-        public async Task<ICharge?> InsertNewTransactionByDueDate(ICharge transaction)
+        public async Task<ICharge?> InsertNewTransactionByMonth(ICharge transaction)
         {
-            var listTransacions = await ListTransactionsByDueDate(transaction.DueDate);
+            var month = new Month(transaction.DueDate.Month.ToString());
+
+            var listTransacions = await ListTransactionsByMonth(month.ToString());
 
             listTransacions.Add(transaction);
 
-            await _clientTransactionsByDueDate.Database.StringSetAsync(transaction.DueDate.ToString(), JsonSerializer.Serialize(listTransacions));
+            await _clientTransactionsByMonth.Database.StringSetAsync(month.ToString(), JsonSerializer.Serialize(listTransacions));
 
             return transaction;
         }

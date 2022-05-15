@@ -1,6 +1,6 @@
 ﻿using PayService.Customer.Data;
+using System.Threading.Tasks;
 using Xunit;
-
 
 namespace PayService.Customer.Test.Data
 {
@@ -14,7 +14,7 @@ namespace PayService.Customer.Test.Data
         }
 
         [Fact]
-        public async void InsertNewCustomerTest()
+        public async Task InsertNewCustomerTest()
         {
             var repository = new CustomerRepository();
 
@@ -29,7 +29,7 @@ namespace PayService.Customer.Test.Data
         }
 
         [Fact]
-        public async void InsertCustomerCpfAlreadyExistsTest()
+        public async Task InsertCustomerCpfAlreadyExistsTest()
         {
             var repository = new CustomerRepository();
 
@@ -38,6 +38,25 @@ namespace PayService.Customer.Test.Data
 
             Assert.NotNull(result);
             Assert.Equal("63146472074", result!.Cpf);
+        }
+
+        [Fact]
+        public async Task FindByCpfTest()
+        {
+            var repository = new CustomerRepository();
+            var result = await repository.FindByCpf("63146472074");
+
+            Assert.NotNull(result);
+            Assert.Equal("63146472074", result!.Cpf);
+        }
+
+        [Fact]
+        public async Task FindByCpfNotFoundTest()
+        {
+            var repository = new CustomerRepository();
+            var result = await repository.FindByCpf("55208723093");
+
+            Assert.Null(result);
         }
     }
 }

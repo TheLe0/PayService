@@ -2,12 +2,13 @@
 using PayService.Customer.Data;
 using PayService.Contract.Model;
 using PayService.Contract.Service;
+using PayService.Contract.Data;
 
 namespace PayService.Customer.Service
 {
     public class CustomerService : ICustomerService
     {
-        private readonly CustomerRepository _repository;
+        private readonly ICustomerRepository _repository;
 
         public CustomerService()
         {
