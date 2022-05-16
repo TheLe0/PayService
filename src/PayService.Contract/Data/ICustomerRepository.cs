@@ -6,5 +6,6 @@ namespace PayService.Contract.Data
     {
         public Task<ICustomer?> FindByCpf(string cpf);
         public Task<ICustomer?> InsertNewCustomer(ICustomer customer);
+        public Task<List<ICustomer>> ListAllCustomers();
     }
 }

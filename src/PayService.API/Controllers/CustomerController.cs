@@ -33,7 +33,7 @@ namespace PayService.API.Controllers
 
                 if (customer == null)
                 {
-                    return StatusCode(404, $"Error: Fail during the customer creation, verify the data and try again!");
+                    return NotFound($"Error: Fail during the customer creation, verify the data and try again!");
                 }
 
                 return Ok(customer);
@@ -41,7 +41,7 @@ namespace PayService.API.Controllers
             catch (DomainException exc)
             {
                 _logger.LogError(exc.Message);
-                return StatusCode(400, $"Error: {exc.Message}");
+                return BadRequest($"Error: {exc.Message}");
             }
         }
 
@@ -55,7 +55,7 @@ namespace PayService.API.Controllers
 
                 if (customer == null)
                 {
-                    return StatusCode(404, $"Error: Customer not found!");
+                    return NotFound($"Error: Customer not found!");
                 }
 
                 return Ok(customer);
@@ -63,7 +63,7 @@ namespace PayService.API.Controllers
             catch (DomainException exc)
             {
                 _logger.LogError(exc.Message);
-                return StatusCode(400, $"Error: {exc.Message}");
+                return BadRequest($"Error: {exc.Message}");
             }
         }
     }

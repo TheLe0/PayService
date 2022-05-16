@@ -1,9 +1,8 @@
-﻿using PayService.Contract.Model;
-using System.ComponentModel;
+﻿using System.ComponentModel;
 
 namespace PayService.API.BodyRequests
 {
-    public class CustomerBodyRequest : ICustomer
+    public class CustomerBodyRequest
     {
         [DefaultValue("Leonardo")]
         public string Name { get; set; }

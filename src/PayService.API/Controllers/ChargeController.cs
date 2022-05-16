@@ -33,7 +33,7 @@ namespace PayService.API.Controllers
 
                 if (result == null)
                 {
-                    return StatusCode(404, $"Error: Cpf not found on the system!");
+                    return NotFound($"Error: Cpf not found on the system!");
                 }
                 else
                 {
@@ -41,6 +41,7 @@ namespace PayService.API.Controllers
 
                     if (charge == null)
                     {
+                        
                         return StatusCode(500, $"Error: Internal server error!");
                     }
 
@@ -49,7 +50,8 @@ namespace PayService.API.Controllers
             }
             catch (DomainException exc)
             {
-                return StatusCode(400, $"Error: {exc.Message}");
+                _logger.LogError(exc.Message);
+                return BadRequest($"Error: {exc.Message}");
             }
         }
 
@@ -70,11 +72,12 @@ namespace PayService.API.Controllers
                     return Ok(result);
                 }
 
-                return StatusCode(400, $"Error: You must specify a cpf or a due date!");
+                return BadRequest($"Error: You must specify a cpf or a due date!");
             }
             catch (DomainException exc)
             {
-                return StatusCode(400, $"Error: {exc.Message}");
+                _logger.LogError(exc.Message);
+                return BadRequest($"Error: {exc.Message}");
             }
         }
     }

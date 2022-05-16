@@ -5,5 +5,6 @@
         public string Name { get; set; }
         public string State { get; set; }
         public string Cpf { get; set; }
+        public double CalculateCost();
     }
 }

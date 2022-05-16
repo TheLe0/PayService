@@ -1,0 +1,14 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\PayService.Contract\PayService.Contract.csproj" />
+    <ProjectReference Include="..\PayService.Customer\PayService.Customer.csproj" />
+  </ItemGroup>
+
+</Project>

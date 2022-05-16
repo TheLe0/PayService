@@ -14,6 +14,27 @@ namespace PayService.Customer.Data
         public CustomerRepository()
         {
             _client = new RedisClient(DatabaseType.CUSTOMERS);
+
+        }
+
+        public async Task<List<ICustomer>> ListAllCustomers()
+        {
+            var list = new List<ICustomer>();
+
+            foreach (var key in _client.Server.Keys((int) DatabaseType.CUSTOMERS, pattern: "*"))
+            {
+                var result = await _client.Database.StringGetAsync(key);
+                var customer = JsonSerializer.Deserialize<Customer>(result);
+
+                if (customer == null)
+                {
+                    continue;
+                }
+
+                list.Add(new Customer(customer.Name, customer.State, key));
+            }
+
+            return list;
         }
 
         public async Task<ICustomer?> FindByCpf(string cpf)

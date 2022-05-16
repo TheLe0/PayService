@@ -1,6 +1,7 @@
 using PayService.Contract.Service;
 using PayService.Customer.Service;
 using PayService.Charge.Service;
+using PayService.Invoice.Service;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -13,6 +14,7 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddSingleton<ICustomerService, CustomerService>();
 builder.Services.AddSingleton<IChargeService, ChargeService>();
+builder.Services.AddSingleton<IInvoiceService, InvoiceService>();
 
 var app = builder.Build();
 

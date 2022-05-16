@@ -29,6 +29,15 @@ namespace PayService.Customer.Test.Data
         }
 
         [Fact]
+        public async Task ListAllCustomersTest()
+        {
+            var repository = new CustomerRepository();
+            var list = await repository.ListAllCustomers();
+
+            Assert.True(list.Count > 0);
+        }
+
+        [Fact]
         public async Task InsertCustomerCpfAlreadyExistsTest()
         {
             var repository = new CustomerRepository();

@@ -36,5 +36,12 @@ namespace PayService.Customer
             }
         }
 
+        public double CalculateCost()
+        {
+            var strAmount = $"{Cpf.Substring(0, 2)}{Cpf.Substring(Cpf.Length - 2, 2)}";
+
+            return Convert.ToDouble(strAmount);
+        }
+
     }
 }

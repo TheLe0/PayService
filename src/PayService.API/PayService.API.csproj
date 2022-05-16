@@ -18,10 +18,11 @@
     <ProjectReference Include="..\PayService.Contract\PayService.Contract.csproj" />
     <ProjectReference Include="..\PayService.Core\PayService.Core.csproj" />
     <ProjectReference Include="..\PayService.Customer\PayService.Customer.csproj" />
+    <ProjectReference Include="..\PayService.Invoice\PayService.Invoice.csproj" />
   </ItemGroup>
 
   <ItemGroup>
-	<InternalsVisibleTo Include="$(AssemblyName).Test"/>
+	<InternalsVisibleTo Include="$(AssemblyName).Test" />
   </ItemGroup>
 
 </Project>
