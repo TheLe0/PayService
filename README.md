@@ -75,5 +75,112 @@ The possible return status code for this request are:
 
 | Status Code | Description                       |
 |-------------|-----------------------------------|
-| 200         | Customer successfully created     |
+| 201         | Customer successfully created     |
 | 400         | Missing field or in wrong format  |
+
+
+### GET `payservice/customer?cpf={}`
+
+Find a previously created customer by its cpf (can pass it formated or not).
+This request has no body. And the return is same as the POST version of this endpoint.
+
+| Status Code | Description                       |
+|-------------|-----------------------------------|
+| 200         | Customer successfully found       |
+| 400         | Missing field or in wrong format  |
+| 404         | Customer not found                |
+
+### POST `payservice/charge`
+
+This endpoint is for create a customer's charge.
+The body of this request must be as the following model:
+
+```json
+{
+  "dueDate": "2022-05-15",
+  "totalAmount": 0,
+  "cpf": "999.999.999-99"
+}
+```
+| Field       | Type   | Description                                     |
+|-------------|--------|-------------------------------------------------|
+| dueDate     | Date   | The date of the charge on the format YYYY-MM-dd |
+| totalAmount | Double | Customer's regionality                          |
+| cpf         | String | Customer's cpf document number                  |
+
+> Note:
+> Must have all the fields completed to success the request.
+
+And the return is going to be the object itself.
+
+The possible return status code for this request are:
+
+| Status Code | Description                       |
+|-------------|-----------------------------------|
+| 201         | Customer successfully created     |
+| 400         | Missing field or in wrong format  |
+
+### GET `payservice/charge?cpf={}&month={}`
+
+This endpoint is for listing all the charges by a customer (cpf) or period (month). This endpoint only uses one
+of these filters, the cpf has preferences if the user inputed both.
+
+```json
+[
+  {
+    "dueDate": "2022-05-15T00:00:00",
+    "totalAmount": 56.78,
+    "cpf": "99999999999"
+  },
+  {
+    "dueDate": "2022-06-10T00:00:00",
+    "totalAmount": 43.56,
+    "cpf": "99999999999"
+  },
+  {
+    "dueDate": "2022-02-19T00:00:00",
+    "totalAmount": 420.34,
+    "cpf": "99999999999"
+  }
+]
+```
+
+| Status Code | Description                           |
+|-------------|---------------------------------------|
+| 200         | Charges successfully found            |
+| 400         | Missing parameter or in wrong format  |
+
+
+### GET `payservice/invoice/state`
+
+This endpoint is for calculate the invoices of all the customers registered and group it by state.
+The return of the request is going to be as the following:
+
+```json
+[
+  {
+    "state": "SP",
+    "totalAmount": 6340
+  },
+  {
+    "state": "RS",
+    "totalAmount": 385
+  },
+  {
+    "state": "CA",
+    "totalAmount": 9778
+  },
+  {
+    "state": "NC",
+    "totalAmount": 1035
+  },
+  {
+    "state": "NY",
+    "totalAmount": 2368
+  },
+  {
+    "state": "SC",
+    "totalAmount": 8344
+  }
+]
+```
