@@ -6,12 +6,15 @@ This project was built with the following resources:
 
 * .NET 6 (C#) as the programming language;
 * xUnit for integration and unit tests;
+* Swagger as the api documantation;
 * Azure Cache for Redis as the data persistance on the cloud.
 
 ## Installation
 
 You don't need to install any dependencie outside the .NET 6 framework and the packages on NuGet. But, you can
 run the application on Docker too, the ```Dockerfile``` in on ```PayService/src/PayService.API/```.
+The connection string to the Redis instance is on the ``` PayService/src/PayService.Data/ ```, on the json files, ```settings_dev.json``` (running
+the application on DEBUG mode) and ```settings_prod.json``` (running on RELEASE mode).
 
 ## Architecture and Design
 
@@ -31,4 +34,46 @@ endpoints of the REST API.
 
 ![tests](https://user-images.githubusercontent.com/40045069/168700713-76cc410a-60a2-47d7-bac4-f5d2cec708d0.png)
 
+## Endpoints
 
+### POST `payservice/customer`
+
+This endpoint is for creating a new customer.
+The body of the request is like above.
+
+
+```json
+{
+  "name": "Leonardo",
+  "state": "RS",
+  "cpf": "999.999.999-99"
+}
+```
+
+where:
+
+| Field       | Type   | Description                    |
+|-------------|--------|--------------------------------|
+| name        | String | Customer's name                |
+| state       | String | Customer's regionality         |
+| cpf         | String | Customer's cpf document number |
+
+
+> Note:
+> Must have all the fields completed to success the request.
+
+And the return is going to be the object itself.
+
+```json
+{
+  "name": "Leonardo",
+  "state": "RS",
+  "cpf": "99999999999"
+}
+```
+The possible return status code for this request are:
+
+| Status Code | Description                       |
+|-------------|-----------------------------------|
+| 200         | Customer successfully created     |
+| 400         | Missing field or in wrong format  |
