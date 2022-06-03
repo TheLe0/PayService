@@ -1,5 +1,5 @@
 {
   "RedisConfig": {
-    "ConnectionString": "payservice.redis.cache.windows.net,abortConnect=false,ssl=true,allowAdmin=true,password=IfT8aZKIMHOhfvVO4uAuFaHEm7LlmI4IWAzCaG8qkms="
+    "ConnectionString": ""
   }
 }
