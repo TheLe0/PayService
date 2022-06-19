@@ -28,9 +28,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PayService.Data.Test", "tes
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PayService.API.Test", "test\PayService.API.Test\PayService.API.Test.csproj", "{90CFCA84-DF64-4CC6-BF2E-3C4548A0DCB3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PayService.Invoice", "src\PayService.Invoice\PayService.Invoice.csproj", "{DBA122B7-9F1D-4110-91C4-10924BFA8EA3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PayService.Invoice", "src\PayService.Invoice\PayService.Invoice.csproj", "{DBA122B7-9F1D-4110-91C4-10924BFA8EA3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PayService.Invoice.Test", "test\PayService.Invoice.Test\PayService.Invoice.Test.csproj", "{0BDAB4A4-4631-4A4C-BC4B-D870A14300C4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PayService.Invoice.Test", "test\PayService.Invoice.Test\PayService.Invoice.Test.csproj", "{0BDAB4A4-4631-4A4C-BC4B-D870A14300C4}"
+EndProject
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{C57D0C85-72A3-4CFB-B388-E244AFE2A94C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -90,6 +92,10 @@ Global
 		{0BDAB4A4-4631-4A4C-BC4B-D870A14300C4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0BDAB4A4-4631-4A4C-BC4B-D870A14300C4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0BDAB4A4-4631-4A4C-BC4B-D870A14300C4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C57D0C85-72A3-4CFB-B388-E244AFE2A94C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C57D0C85-72A3-4CFB-B388-E244AFE2A94C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C57D0C85-72A3-4CFB-B388-E244AFE2A94C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C57D0C85-72A3-4CFB-B388-E244AFE2A94C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
